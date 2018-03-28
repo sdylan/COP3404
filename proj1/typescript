@@ -1,0 +1,72 @@
+Script started on Thu 01 Feb 2018 07:03:26 PM EST
+]0;n00448518@osprey:~/homepage/cop3404/proj1[?1034h[n00448518@osprey proj1]$ ls
+HashingApp.java  makefile  [0m[38;5;34mp1[0m  text  tst  typescript
+[m]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ shar HashingApp.java makefile p1 text tst >[C[1@ [1@-[1@T[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C n00448518
+shar: Saving HashingApp.java (text)
+shar: Saving makefile (text)
+shar: Saving p1 (text)
+shar: Saving text (text)
+shar: Saving tst (text)
+]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ ls
+HashingApp.java  makefile  n00448518  [0m[38;5;34mp1[0m  text  tst  typescript
+[m]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ mkdir test
+]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ mv n00448518 testg[K
+]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ cd test
+]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ ls
+n00448518
+]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ unshr[Kar n00448518
+/home/18/n00448518/homepage/cop3404/proj1/test/n00448518:
+x - created lock directory `_sh25151'.
+x - extracting HashingApp.java (text)
+x - extracting makefile (text)
+x - extracting p1 (text)
+x - extracting text (text)
+x - extracting tst (text)
+x - removed lock directory `_sh25151'.
+]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ ls
+HashingApp.java  makefile  n00448518  [0m[38;5;34mp1[0m  text  tst
+[m]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ make
+javac HashingApp.java
+]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ p1 te[Kst
+Stored Oliver 25 at position 31.
+Stored Jayden 32 at position 57.
+Stored Joseph 867 at position 89.
+Stored Gabriel 36 at position 94.
+Stored Samuel 156 at position 3.
+Stored Carter 54 at position 93.
+Stored Anthony 567 at position 59.
+Stored John 98 at position 111.
+Stored Dylan 64 at position 24.
+Stored Luke 84 at position 107.
+Stored Henry 65 at position 62.
+ERROR Andrew not found.
+Stored Isaac 65 at position 85.
+Stored Christopher 45 at position 65.
+Stored Joshua 65 at position 42.
+Stored Wyatt 2 at position 99.
+Resolved 1 collision(s). Stored Sebastian 456 at position 95.
+Stored Owen 4 at position 25.
+Stored Caleb 545 at position 39.
+ERROR Nathan not found.
+Stored Ryan 45 at position 110.
+Resolved 1 collision(s). Stored Jack 35 at position 66.
+ERROR Samuel already exists at position 3.
+ERROR Christopher already exists at position 65.
+ERROR Samuel already exists at position 3.
+Carter found at position 93 with value 54.
+Anthony found at position 59 with value 567.
+John found at position 111 with value 98.
+ERROR Anthony already exists at position 59.
+John found at position 111 with value 98.
+ERROR Dylan already exists at position 24.
+ERROR Luke already exists at position 107.
+ERROR Henry already exists at position 62.
+Stored Andrew 45 at position 51.
+ERROR Isaac already exists at position 85.
+ERROR Christopher already exists at position 65.
+ERROR Joshua already exists at position 42.
+Wyatt found at position 99 with value 2.
+]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ exit
+exit
+
+Script done on Thu 01 Feb 2018 07:05:22 PM EST

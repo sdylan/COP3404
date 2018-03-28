@@ -1,0 +1,45 @@
+Samuel Schwartz
+n00448518
+COP3404
+Project 1
+
+
+-------------------------------------------------------------------------------
+
+
+Purpose:
+	
+The aim of this program is to arrange data read from a file into a hash table 
+that will be used during the first and second pass in my assembler.  
+
+Files included in shar:
+
+makefile                (type make to compile)
+p1                      (script to run)
+HashingApp.java         (source)
+text			(documentation/readme/this)
+tst			(example of input list)
+typescript		(proof the program compiles and works)
+
+
+How it works:
+
+To compile, type: make
+To run, type: p1 filename (where filename is the name of the list to be hashed)   
+
+This application starts by reading a file given in a command line argument. It
+reads every line and makes a data object and stores it in an array in order to
+determine the size of the hash table. From here the program goes through each
+entry in this temporary array and determines whether the particular entry should
+be inserted or found in the hash table. 
+
+If the entry is of the format "name value" we will insert the entry into the hash 
+table. If there is already an entry in the hashed position with the same name 
+the program will report an error detailing that the key has already been hashed. 
+If the name is different resolve the collision(s) with quadratic probing and insert 
+in the new position.
+
+If the entry is of the format "name" we will search for the entry in the hash
+table. If it exists in the hash table report the position and value. If it does 
+not exist report an error that the key was not found.
+ 

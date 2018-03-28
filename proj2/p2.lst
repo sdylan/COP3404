@@ -1,0 +1,43 @@
+*********************************************
+University of North Florida: SIC/XE assembler
+version date 11/12/2002
+account: n00448518; Fri Mar  9 02:36:25 2018
+*********************************************
+ASSEMBLER REPORT
+----------------
+     Loc   Object Code       Source Code
+     ---   -----------       -----------
+001- 00100                            START	100
+002- 00100 00000A            NUMELEMS WORD	10
+003- 00103 000001            ORGLST   WORD	1
+004- 00106 000002                     WORD	2
+005- 00109 000003                     WORD	3
+006- 0010C 000004                     WORD	4
+007- 0010F 000005                     WORD	5
+008- 00112 000006                     WORD	6
+009- 00115 000007                     WORD	7
+010- 00118 000008                     WORD	8
+011- 0011B 000009                     WORD	9
+012- 0011E 00000A                     WORD	10
+013- 00121                   REVLST   RESW	10
+014- 0013F 000000            OINDX    WORD	0
+015- 00142                   RINDX    RESW	1
+016- 00145 032FB8            PRG      LDA	NUMELEMS
+017- 00148 6F2027                     LDS	=X'0a'
+018- 0014B 9840                       MULR	S,A
+019- 0014D AC05                       RMO	A,T
+020- 0014F 9440                       SUBR	S,A
+021- 00151 0F2FEE                     STA	RINDX
+022- 00154 032FAC                     LDA	ORGLST
+023- 00157 072FE8            LOOP     LDX	RINDX
+024- 0015A 0FAFC4                     STA	REVLST,X
+025- 0015D 9441                       SUBR	S,X
+026- 0015F 132FE0                     STX	RINDX
+027- 00162 072FDA                     LDX	OINDX
+028- 00165 9041                       ADDR	S,X
+029- 00167 132FD5                     STX	OINDX
+030- 0016A 03AF96                     LDA	ORGLST,X
+031- 0016D A051                       COMPR	T,X
+032- 0016F 372FE5                     JGT	LOOP
+033- 00172                            END	PRG	
++01+ 00172 0a                =X'0a'     BYTE    X'0a'

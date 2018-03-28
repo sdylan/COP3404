@@ -1,0 +1,83 @@
+SIC SIMULATOR V1.6
+File names are:
+loader                                 
+DEVF1                                  
+DEVF2                                  
+DEVF3                                  
+DEV04                                  
+DEV05                                  
+DEV06                                  
+COMMAND: A(CCEPT file names, R(ENAME 1 or more files
+r
+loader                                 
+DEVF1                                  
+max3.obj
+DEVF2                                  
+DEVF3                                  
+DEV04                                  
+DEV05                                  
+DEV06                                  
+File names are:
+loader                                 
+max3.obj                               
+DEVF2                                  
+DEVF3                                  
+DEV04                                  
+DEV05                                  
+DEV06                                  
+COMMAND: A(CCEPT file names, R(ENAME 1 or more files
+a
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+s
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+b 10c
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+  1000 INSTRUCTIONS EXECUTED
+P=00005F
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+  1000 INSTRUCTIONS EXECUTED
+P=00004E
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+BREAKPOINT REACHED
+P=00010C
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+d 100-150
+
+0100 00000F00 000C0000 0DFFFFFF 032FF177
+0110 2FF1A005 37200687 2FEF3F20 030F2FE9
+0120 032FE377 2FE3A005 37200687 2FDB3F20
+0130 030F2FD5 FFFFFFFF FFFFFFFF FFFFFFFF
+0140 FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF
+0150 FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+b 134
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+BREAKPOINT REACHED
+P=000134
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+d 100-150
+
+0100 00000F00 000C0000 0D00000F 032FF177
+0110 2FF1A005 37200687 2FEF3F20 030F2FE9
+0120 032FE377 2FE3A005 37200687 2FDB3F20
+0130 030F2FD5 FFFFFFFF FFFFFFFF FFFFFFFF
+0140 FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF
+0150 FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+UNRECOGNIZED COMMAND
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?

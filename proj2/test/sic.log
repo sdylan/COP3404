@@ -1,0 +1,92 @@
+SIC SIMULATOR V1.6
+File names are:
+loader                                 
+DEVF1                                  
+DEVF2                                  
+DEVF3                                  
+DEV04                                  
+DEV05                                  
+DEV06                                  
+COMMAND: A(CCEPT file names, R(ENAME 1 or more files
+r
+loader                                 
+DEVF1                                  
+p2.obj
+DEVF2                                  
+fi
+DEVF3                                  
+DEV04                                  
+DEV05                                  
+DEV06                                  
+File names are:
+loader                                 
+p2.obj                                 
+fi                                     
+DEVF3                                  
+DEV04                                  
+DEV05                                  
+DEV06                                  
+COMMAND: A(CCEPT file names, R(ENAME 1 or more files
+a
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+b 128
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+s
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+  1000 INSTRUCTIONS EXECUTED
+P=00005F
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+  1000 INSTRUCTIONS EXECUTED
+P=00003C
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+  1000 INSTRUCTIONS EXECUTED
+P=00004E
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+  1000 INSTRUCTIONS EXECUTED
+P=00004B
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+BREAKPOINT REACHED
+P=000128
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+d 100-150
+           
+0100 00000A>FF FFFFFFFF FFFFFFFF FFFFFFFF    (The empty reverse list falls 
+0110 FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF     between the two arrows, indicating
+0120 FF<FFFFFF 000000F2 032FD56D 0003750F    the first and last byte.)
+0130 FF984094 40AC01E3 2FED332F FA010000
+0140 DB2FE429 00213B20 151D0030 0F2FD203
+0150 2FD22100 0A1B2FC9 0F2FC93F 2FD9032F
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+b 171
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+r
+BREAKPOINT REACHED
+P=000171
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+d 100-150
+
+0100 00000A>00 00170000 3100000A 00004800     (The filled reverse list falls
+0110 0010FFFF FC00000E 00133900 00260000      between the two arrows, indicating
+0120 C0<000003 000000F2 032FD56D 0003750F     the first and last byte.)
+0130 FF984094 40AC01E3 2FED332F FA010000
+0140 DB2FE429 00213B20 151D0030 0F2FD203
+0150 2FD22100 0A1B2FC9 0F2FC93F 2FD9032F
+
+COMMAND: S(TART, R(UN, E(NTER, D(UMP, H(COUNT, B(KPT, F(ILES, T(RACE, Q(UIT?
+q

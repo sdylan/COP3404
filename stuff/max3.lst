@@ -1,0 +1,29 @@
+*********************************************
+University of North Florida: SIC/XE assembler
+version date 11/12/2002
+account: n00448518; Thu Feb 15 20:00:00 2018
+*********************************************
+ASSEMBLER REPORT
+----------------
+     Loc   Object Code       Source Code
+     ---   -----------       -----------
+001- 00100                             START	100
+002- 00100 00000F            FIRST     WORD	15
+003- 00103 00000C            SEC       WORD	12
+004- 00106 00000D            THRD      WORD	13
+005- 00109                   MAX       RESW	1
+006- 0010C 032FF1            PRG       LDA	FIRST
+007- 0010F 772FF1                      LDT   SEC
+008- 00112 A005                        COMPR A,T
+009- 00114 372006                      JGT   FLRGR
+010- 00117 872FEF                      STT	MAX
+011- 0011A 3F2003                      J	NEXT
+012- 0011D 0F2FE9            FLRGR     STA	MAX
+013- 00120 032FE3            NEXT      LDA	THRD
+014- 00123 772FE3                      LDT	MAX
+015- 00126 A005                        COMPR	A,T
+016- 00128 372006                      JGT	FINAL
+017- 0012B 872FDB                      STT	MAX
+018- 0012E 3F2003                      J	LAST
+019- 00131 0F2FD5            FINAL     STA	MAX
+020- 00134                   LAST      END	PRG  

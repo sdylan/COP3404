@@ -1,0 +1,60 @@
+Samuel Schwartz
+n00448518
+Project 2
+COP3404
+
+
+--------------------------------------------------------------------------------
+
+The purpose of this SIC/XE program is to get a better understanding of writing
+a program in an assembly language as well as becoming more familiar with how the
+registers in a CPU may work.   
+
+Files Included in Shar:
+
+doc		This file. The documentation.
+p2		The source code in SIC/XE assembly code.
+sic.log		Log of a test run of the assembled code using sicsim.
+fi		Sample input file. Base 10 numbers separated by a space.
+
+How the program works:
+
+To assemble the source code into the object code type "sicasm p2". Then run the
+code by opening the SIC Simulator (sicsim). The object code will go into DEVF1
+and the input file will go into DEVF2. Set a breakpoint at 128 to see the empty
+reverse list (REVLST) in which the first word starts at memory location 103 and
+the tenth word begins at memory location 11E. Now set the breakpoint to 171 
+where the program ends.
+
+The input file will have ten positive integers as follows:
+
+192 38 4921 14 16777212 16 72 10 49 23
+
+As the program runs it will read a single character from the input file and
+construct a number until it reaches a space. When the program reads a space 
+character the previously constructed number will be stored in the reverse list 
+as a hexadecimal number starting in the last 3 bytes. From there it will 
+construct the next number and repeatedly place the contructed number into the 
+next lowest word of REVLST. After the program has read and stored 10 numbers 
+from the input file it will end.
+
+A second dump of memory will now show a hexadecimal representation of the list
+from the input file in reverse order starting at memory location 103 with the 
+last word beginning at memory location 11E.
+
+For the above list the code stored in each successive word will be:
+
+000017 000031 00000A 000048 000010 FFFFFC 00000E 001339 000026 0000C0
+
+Which converted to decimal is:
+
+23 49 10 72 16 16777212 14 4921 38 192
+
+The sic.log will reflect the results of following this set of instructions using
+the list of numbers suggested here. 
+
+The program can be changed to read more or less numbers as well. In order to do
+this the source code and input file must reflect the amount of numbers to read.
+In the source code, change the word NUMELEMS and the amount of words in REVLST 
+to the amount of numbers to read. The input file should have the same amount of
+base 10 numbers separated by a space.

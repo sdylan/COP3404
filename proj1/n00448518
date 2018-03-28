@@ -1,0 +1,543 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.7).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the `#!/bin/sh' line above, then type `sh FILE'.
+#
+lock_dir=_sh25487
+# Made on 2018-02-01 19:08 EST by <n00448518@osprey.unfcsd.unf.edu>.
+# Source directory was `/home/18/n00448518/homepage/cop3404/proj1'.
+#
+# Existing files will *not* be overwritten, unless `-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#   3215 -rw-r--r-- HashingApp.java
+#     57 -rw-r--r-- makefile
+#   1599 -rw-r--r-- text
+#   3531 -rw-r--r-- typescript
+#    363 -rw-r--r-- tst
+#     32 -rwxr-xr-x p1
+#
+MD5SUM=${MD5SUM-md5sum}
+f=`${MD5SUM} --version | egrep '^md5sum .*(core|text)utils'`
+test -n "${f}" && md5check=true || md5check=false
+${md5check} || \
+  echo 'Note: not verifying md5sums.  Consider installing GNU coreutils.'
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=FAILED
+locale_dir=FAILED
+first_param="$1"
+for dir in $PATH
+do
+  if test "$gettext_dir" = FAILED && test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    case `$dir/gettext --version 2>&1 | sed 1q` in
+      *GNU*) gettext_dir=$dir ;;
+    esac
+  fi
+  if test "$locale_dir" = FAILED && test -f $dir/shar \
+     && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+  then
+    locale_dir=`$dir/shar --print-text-domain-dir`
+  fi
+done
+IFS="$save_IFS"
+if test "$locale_dir" = FAILED || test "$gettext_dir" = FAILED
+then
+  echo=echo
+else
+  TEXTDOMAINDIR=$locale_dir
+  export TEXTDOMAINDIR
+  TEXTDOMAIN=sharutils
+  export TEXTDOMAIN
+  echo="$gettext_dir/gettext -s"
+fi
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null
+then if (echo -n test; echo 1,2,3) | grep n >/dev/null
+     then shar_n= shar_c='
+'
+     else shar_n=-n shar_c= ; fi
+else shar_n= shar_c='\c' ; fi
+f=shar-touch.$$
+st1=200112312359.59
+st2=123123592001.59
+st2tr=123123592001.5 # old SysV 14-char limit
+st3=1231235901
+
+if touch -am -t ${st1} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st1} && test -f ${f}; then
+  shar_touch='touch -am -t $1$2$3$4$5$6.$7 "$8"'
+
+elif touch -am ${st2} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st2} && test ! -f ${st2tr} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$1$2.$7 "$8"'
+
+elif touch -am ${st3} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st3} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$2 "$8"'
+
+else
+  shar_touch=:
+  echo
+  ${echo} 'WARNING: not restoring timestamps.  Consider getting and'
+  ${echo} 'installing GNU `touch'\'', distributed in GNU coreutils...'
+  echo
+fi
+rm -f ${st1} ${st2} ${st2tr} ${st3} ${f}
+#
+if test ! -d ${lock_dir}
+then : ; else ${echo} 'lock directory '${lock_dir}' exists'
+  exit 1
+fi
+if mkdir ${lock_dir}
+then ${echo} 'x - created lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to create lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+# ============= HashingApp.java ==============
+if test -f 'HashingApp.java' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING HashingApp.java (file already exists)'
+else
+${echo} 'x - extracting HashingApp.java (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'HashingApp.java' &&
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.ArrayList;
+X
+public class HashingApp {
+X
+X    public static void main(String[] args)throws FileNotFoundException{
+X
+X	HashTable table = new HashTable();
+X
+X	table.getDataSetSize(args[0]);
+X	
+X	table.fillTable(); 
+X    }
+}
+X
+class HashTable{
+X
+X    private int size;	
+X    private HashTableEntry[] arr;
+X    private ArrayList<HashTableEntry> tempArr;
+X
+X    public void getDataSetSize(String fileName)throws FileNotFoundException {
+X	Scanner sc = new Scanner(new File(fileName));
+X	tempArr = new ArrayList<HashTableEntry>();
+X	
+X	while(sc.hasNextLine()){
+X	    String[] str = sc.nextLine().split("[ \t]+");
+X	    if (str.length == 2){
+X		tempArr.add(new HashTableEntry(str[0], Integer.parseInt(str[1])));
+X	    }
+X	    else{
+X		tempArr.add(new HashTableEntry(str[0]));
+X	    }
+X	}
+X
+X	size = tempArr.size() * 3;
+X       // System.out.println(size);
+X    }
+X
+X    public void fillTable(){
+X	arr = new HashTableEntry[size];
+X	
+X	for(HashTableEntry i: tempArr){
+X	    if(i.getInsert())
+X		insertEntry(i);
+X	    else
+X		findEntry(i.getName());
+X	}
+X    }
+X 
+X    public void insertEntry (HashTableEntry entry){
+X	int insertPos = acquireHashCode(entry.getName());
+X	int colls = 0;	
+X	while(true){
+X	    if (arr[insertPos] == null){
+X		arr[insertPos] = entry;
+X		if (colls>0)
+X		    System.out.print("Resolved " + colls + " collision(s). ");
+X		System.out.print("Stored " + entry.getName()+ " " + entry.getValue() + " at position " + insertPos + ".\n");
+X		break;
+X	    }
+X	    else if (entry.getName().equals(arr[insertPos].getName())){
+X		System.out.print("ERROR " + entry.getName() + " already exists at position " + insertPos + ".\n");
+X		break;
+X	    }
+X	    else{
+X		colls++;
+X		insertPos = resolveCollision(insertPos, colls); 
+X	    }
+X	}
+X    }
+X
+X    public void findEntry (String str){
+X        int insertPos = acquireHashCode(str);
+X	int colls = 0;
+X	while(true)
+X	    if (arr[insertPos] == null){
+X		System.out.print("ERROR " + str + " not found.\n");
+X		break;
+X	    }
+X	    else if (arr[insertPos].getName().equals(str)){
+X		System.out.print(str + " found at position " + insertPos  + " with value " + arr[insertPos].getValue() +  ".\n");
+X		break;
+X	    }
+X    	    else{
+X		colls++;
+X		insertPos = resolveCollision(insertPos, colls);
+X    	    }
+X    }
+X
+X    public int acquireHashCode(String str){
+X        int g = 31;
+X	int hash = 0;
+X	for (int i = 0; i<str.length(); i++){
+X            hash = (g * hash + str.charAt(i)) % size;
+X        }
+X        return hash;
+X    }
+X
+X    public int resolveCollision(int pos, int colls){
+X	return (pos + colls * colls) % size;
+X    }
+X
+X
+X
+}
+X
+class HashTableEntry {
+X    private String name;
+X    private int value;
+X    private boolean insert;	    
+X
+X    public HashTableEntry(){
+X
+X    }
+X
+X    public HashTableEntry(String name, int value){
+X        this.name = name;
+X        this.value = value;
+X	this.insert = true;
+X	
+X    }
+X
+X    public HashTableEntry(String name){
+X        this.name = name;
+X	this.insert = false;
+X    }
+X
+X    public String getName(){return name;}
+X
+X    public void setName(String name){this.name = name;}
+X
+X    public int getValue(){return value;}
+X
+X    public void setValue(int value){this.value = value;}
+X
+X    public boolean getInsert(){return insert;}
+}
+SHAR_EOF
+  (set 20 18 01 20 00 00 09 'HashingApp.java'; eval "$shar_touch") &&
+  chmod 0644 'HashingApp.java'
+if test $? -ne 0
+then ${echo} 'restore of HashingApp.java failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'HashingApp.java: MD5 check failed'
+       ) << \SHAR_EOF
+09d8589fd072c07d72ff910c37adea23  HashingApp.java
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'HashingApp.java'` -ne 3215 && \
+  ${echo} 'restoration warning:  size of HashingApp.java is not 3215'
+  fi
+fi
+# ============= makefile ==============
+if test -f 'makefile' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING makefile (file already exists)'
+else
+${echo} 'x - extracting makefile (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'makefile' &&
+HashingApp.class: HashingApp.java
+X	javac HashingApp.java
+SHAR_EOF
+  (set 20 18 02 01 15 07 04 'makefile'; eval "$shar_touch") &&
+  chmod 0644 'makefile'
+if test $? -ne 0
+then ${echo} 'restore of makefile failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'makefile: MD5 check failed'
+       ) << \SHAR_EOF
+2044d43c0331f399bba08e00dd7ca5b8  makefile
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'makefile'` -ne 57 && \
+  ${echo} 'restoration warning:  size of makefile is not 57'
+  fi
+fi
+# ============= text ==============
+if test -f 'text' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING text (file already exists)'
+else
+${echo} 'x - extracting text (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'text' &&
+Samuel Schwartz
+n00448518
+COP3404
+Project 1
+X
+X
+-------------------------------------------------------------------------------
+X
+X
+Purpose:
+X	
+The aim of this program is to arrange data read from a file into a hash table 
+that will be used during the first and second pass in my assembler.  
+X
+Files included in shar:
+X
+makefile                (type make to compile)
+p1                      (script to run)
+HashingApp.java         (source)
+text			(documentation/readme/this)
+tst			(example of input list)
+typescript		(proof the program compiles and works)
+X
+X
+How it works:
+X
+To compile, type: make
+To run, type: p1 filename (where filename is the name of the list to be hashed)   
+X
+This application starts by reading a file given in a command line argument. It
+reads every line and makes a data object and stores it in an array in order to
+determine the size of the hash table. From here the program goes through each
+entry in this temporary array and determines whether the particular entry should
+be inserted or found in the hash table. 
+X
+If the entry is of the format "name value" we will insert the entry into the hash 
+table. If there is already an entry in the hashed position with the same name 
+the program will report an error detailing that the key has already been hashed. 
+If the name is different resolve the collision(s) with quadratic probing and insert 
+in the new position.
+X
+If the entry is of the format "name" we will search for the entry in the hash
+table. If it exists in the hash table report the position and value. If it does 
+not exist report an error that the key was not found.
+X 
+SHAR_EOF
+  (set 20 18 02 01 19 01 19 'text'; eval "$shar_touch") &&
+  chmod 0644 'text'
+if test $? -ne 0
+then ${echo} 'restore of text failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'text: MD5 check failed'
+       ) << \SHAR_EOF
+d154c6b7f29364b0470dcc825eab259e  text
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'text'` -ne 1599 && \
+  ${echo} 'restoration warning:  size of text is not 1599'
+  fi
+fi
+# ============= typescript ==============
+if test -f 'typescript' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING typescript (file already exists)'
+else
+${echo} 'x - extracting typescript (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'typescript' &&
+Script started on Thu 01 Feb 2018 07:03:26 PM EST
+X]0;n00448518@osprey:~/homepage/cop3404/proj1[?1034h[n00448518@osprey proj1]$ ls
+HashingApp.java  makefile  [0m[38;5;34mp1[0m  text  tst  typescript
+X[m]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ shar HashingApp.java makefile p1 text tst >[C[1@ [1@-[1@T[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C n00448518
+shar: Saving HashingApp.java (text)
+shar: Saving makefile (text)
+shar: Saving p1 (text)
+shar: Saving text (text)
+shar: Saving tst (text)
+X]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ ls
+HashingApp.java  makefile  n00448518  [0m[38;5;34mp1[0m  text  tst  typescript
+X[m]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ mkdir test
+X]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ mv n00448518 testg[K
+X]0;n00448518@osprey:~/homepage/cop3404/proj1[n00448518@osprey proj1]$ cd test
+X]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ ls
+n00448518
+X]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ unshr[Kar n00448518
+/home/18/n00448518/homepage/cop3404/proj1/test/n00448518:
+x - created lock directory `_sh25151'.
+x - extracting HashingApp.java (text)
+x - extracting makefile (text)
+x - extracting p1 (text)
+x - extracting text (text)
+x - extracting tst (text)
+x - removed lock directory `_sh25151'.
+X]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ ls
+HashingApp.java  makefile  n00448518  [0m[38;5;34mp1[0m  text  tst
+X[m]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ make
+javac HashingApp.java
+X]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ p1 te[Kst
+Stored Oliver 25 at position 31.
+Stored Jayden 32 at position 57.
+Stored Joseph 867 at position 89.
+Stored Gabriel 36 at position 94.
+Stored Samuel 156 at position 3.
+Stored Carter 54 at position 93.
+Stored Anthony 567 at position 59.
+Stored John 98 at position 111.
+Stored Dylan 64 at position 24.
+Stored Luke 84 at position 107.
+Stored Henry 65 at position 62.
+ERROR Andrew not found.
+Stored Isaac 65 at position 85.
+Stored Christopher 45 at position 65.
+Stored Joshua 65 at position 42.
+Stored Wyatt 2 at position 99.
+Resolved 1 collision(s). Stored Sebastian 456 at position 95.
+Stored Owen 4 at position 25.
+Stored Caleb 545 at position 39.
+ERROR Nathan not found.
+Stored Ryan 45 at position 110.
+Resolved 1 collision(s). Stored Jack 35 at position 66.
+ERROR Samuel already exists at position 3.
+ERROR Christopher already exists at position 65.
+ERROR Samuel already exists at position 3.
+Carter found at position 93 with value 54.
+Anthony found at position 59 with value 567.
+John found at position 111 with value 98.
+ERROR Anthony already exists at position 59.
+John found at position 111 with value 98.
+ERROR Dylan already exists at position 24.
+ERROR Luke already exists at position 107.
+ERROR Henry already exists at position 62.
+Stored Andrew 45 at position 51.
+ERROR Isaac already exists at position 85.
+ERROR Christopher already exists at position 65.
+ERROR Joshua already exists at position 42.
+Wyatt found at position 99 with value 2.
+X]0;n00448518@osprey:~/homepage/cop3404/proj1/test[n00448518@osprey test]$ exit
+exit
+X
+Script done on Thu 01 Feb 2018 07:05:22 PM EST
+SHAR_EOF
+  (set 20 18 02 01 19 05 22 'typescript'; eval "$shar_touch") &&
+  chmod 0644 'typescript'
+if test $? -ne 0
+then ${echo} 'restore of typescript failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'typescript: MD5 check failed'
+       ) << \SHAR_EOF
+0473ba8b090222e00afce9562b1bf0d1  typescript
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'typescript'` -ne 3531 && \
+  ${echo} 'restoration warning:  size of typescript is not 3531'
+  fi
+fi
+# ============= tst ==============
+if test -f 'tst' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING tst (file already exists)'
+else
+${echo} 'x - extracting tst (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'tst' &&
+Oliver 25
+Jayden 32
+Joseph 867
+Gabriel 36
+Samuel 156
+Carter 54
+Anthony 567
+John 98 
+Dylan 64 
+Luke 84
+Henry 65
+Andrew
+Isaac 65
+Christopher 45
+Joshua 65
+Wyatt 2
+Sebastian 456
+Owen 4
+Caleb 545
+Nathan
+Ryan 45
+Jack 35
+Samuel 456
+Christopher 35
+Samuel 87
+Carter
+Anthony
+John
+Anthony 57
+John
+Dylan 54
+Luke 54
+Henry 63
+Andrew 45
+Isaac 648
+Christopher 42
+Joshua 56
+Wyatt
+SHAR_EOF
+  (set 20 18 01 31 00 07 10 'tst'; eval "$shar_touch") &&
+  chmod 0644 'tst'
+if test $? -ne 0
+then ${echo} 'restore of tst failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'tst: MD5 check failed'
+       ) << \SHAR_EOF
+a154b659d4437117aa1dcb28d9469618  tst
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'tst'` -ne 363 && \
+  ${echo} 'restoration warning:  size of tst is not 363'
+  fi
+fi
+# ============= p1 ==============
+if test -f 'p1' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING p1 (file already exists)'
+else
+${echo} 'x - extracting p1 (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'p1' &&
+#!/bin/bash
+X
+java HashingApp $1
+SHAR_EOF
+  (set 20 18 02 01 15 13 05 'p1'; eval "$shar_touch") &&
+  chmod 0755 'p1'
+if test $? -ne 0
+then ${echo} 'restore of p1 failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'p1: MD5 check failed'
+       ) << \SHAR_EOF
+f7cedca8607784386d6d1b472ab71d5f  p1
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'p1'` -ne 32 && \
+  ${echo} 'restoration warning:  size of p1 is not 32'
+  fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} 'x - removed lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to remove lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+exit 0

@@ -1,0 +1,42 @@
+*********************************************
+University of North Florida: SIC/XE assembler
+version date 11/12/2002
+account: n00448518; Wed Feb 21 13:34:12 2018
+*********************************************
+ASSEMBLER REPORT
+----------------
+     Loc   Object Code       Source Code
+     ---   -----------       -----------
+001- 00100                            START	100
+002- 00100 00000A            NUMELEMS WORD	10
+003- 00103                   REVLST   RESW	10
+004- 00121                   ONES     RESW	1
+005- 00124 000000            TEMP     WORD	0
+006- 00127 F2                INDEV    BYTE	X'F2'
+007- 00128 032FD5            PRG      LDA	NUMELEMS
+008- 0012B 6D0003                     LDS	#3
+009- 0012E 750FFF                     LDT	#-1
+010- 00131 9840                       MULR	S,A
+011- 00133 9440                       SUBR	S,A
+012- 00135 AC01                       RMO	A,X
+013- 00137 E32FED            RLOOP    TD	INDEV
+014- 0013A 332FFA                     JEQ	RLOOP
+015- 0013D 010000                     LDA	#0
+016- 00140 DB2FE4                     RD	INDEV
+017- 00143 290021                     COMP	#33
+018- 00146 3B2015                     JLT	STORE
+019- 00149 1D0030                     SUB	#48
+020- 0014C 0F2FD2                     STA	ONES
+021- 0014F 032FD2                     LDA	TEMP
+022- 00152 21000A                     MUL	#10
+023- 00155 1B2FC9                     ADD	ONES
+024- 00158 0F2FC9                     STA	TEMP
+025- 0015B 3F2FD9                     J	RLOOP
+026- 0015E 032FC3            STORE    LDA	TEMP
+027- 00161 0FAF9F                     STA	REVLST,X
+028- 00164 9441                       SUBR	S,X
+029- 00166 010000                     LDA	#0
+030- 00169 0F2FB8                     STA	TEMP
+031- 0016C A051                       COMPR	T,X
+032- 0016E 3B2FC6                     JLT	RLOOP
+033- 00171                   DONE     END	PRG	
